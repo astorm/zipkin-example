@@ -10,7 +10,7 @@ const {HttpLogger} = require('zipkin-transport-http');
 
 const createTracer = (localServiceName) => {
   const tracer = new Tracer({
-    ctxImpl: new CLSContext('zipkin'),
+    ctxImpl: new CLSContext('zipkin', true),
     recorder: new BatchRecorder({
       logger: new HttpLogger({
         endpoint: 'http://localhost:9411/api/v2/spans',
