@@ -9,6 +9,8 @@ const setupMainProgram = function() {
   const app = express()
   const port = 3000
 
+  app.use(zipkinMiddleware({tracer}));
+
   app.get('/main', async function (req, res) {
     // fetch data from second service running on port 3001
     const zipkinFetch = createFetcher('service-hello', tracer)
@@ -18,7 +20,7 @@ const setupMainProgram = function() {
     res.type('json')
     res.send(JSON.stringify({main:resultJson.message}))
   })
-  app.use(zipkinMiddleware({tracer}));
+
   app.listen(
     port,
     function() {
