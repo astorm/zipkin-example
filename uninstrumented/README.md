@@ -1,6 +1,8 @@
-# zipkin-example
+# Uninstrumented
 
-This repo contains a small program that implements three small services, and instruments these services using zipkin. This all assumes zipkin is running at http://localhost:9411/zipkin/.  You can start all three services by running
+This repo contains a small program that implements three small uninstrumented services.
+
+You can start all three services by running
 
     $ npm run start
 
