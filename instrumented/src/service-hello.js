@@ -1,5 +1,5 @@
 const express = require('express')
-const zipkinMiddleware = require('zipkin-instrumentation-express').expressMiddleware;
+const createZipkinMiddleware = require('zipkin-instrumentation-express').expressMiddleware;
 const {createTracer, createFetcher, getUrlContents} = require('./util.js')
 
 const tracer = createTracer('service-hello')
@@ -8,7 +8,7 @@ const setupServiceHello = function() {
   const app = express()
   const port = 3001
 
-  app.use(zipkinMiddleware({tracer}));
+  app.use(createZipkinMiddleware({tracer}));
 
   app.get('/hello', async function (req, res) {
     const zipkinFetch = createFetcher('service-goodbye', tracer)

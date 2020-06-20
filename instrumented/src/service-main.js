@@ -1,6 +1,6 @@
 const express = require('express')
 const fetch = require('node-fetch')
-const zipkinMiddleware = require('zipkin-instrumentation-express').expressMiddleware;
+const createZipkinMiddleware = require('zipkin-instrumentation-express').expressMiddleware;
 const {createTracer, createFetcher, getUrlContents} = require('./util.js')
 
 const setupMainProgram = function() {
@@ -9,7 +9,7 @@ const setupMainProgram = function() {
   const app = express()
   const port = 3000
 
-  app.use(zipkinMiddleware({tracer}));
+  app.use(createZipkinMiddleware({tracer}));
 
   app.get('/main', async function (req, res) {
     // fetch data from second service running on port 3001
