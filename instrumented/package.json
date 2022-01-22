@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "zipkin-context-cls": "0.19.2-alpha.7",
     "zipkin-instrumentation-express": "^0.21.0",
     "zipkin-instrumentation-fetch": "^0.21.0",
